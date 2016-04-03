@@ -10,12 +10,26 @@
 		function search(query, res) {
 			const query_trim = query.trim();
 
+			const errObj = {
+    			id: "error",
+    			title: "Invalid countdown time",
+    			desc: "Usage: /countdown [hours]:[minutes]"
+    		};
+
 			if (query_trim.length === 0) {
 	      		return res.add({
 	      			id: "helpText",
 	      			title: "Setting countdown timer for: ",
 	      			desc: "Usage: /countdown [hours]:[minutes]"
 	      		});
+	    	}
+
+	    	if(query_trim.includes(".")){
+	    		return res.add({
+	    			id: "error",
+	    			title: "Invalid countdown time - decimal values are not permitted",
+	    			desc: "Usage: /countdown [hours]:[minutes]"
+	    		});
 	    	}
 
 	    	const query_split = query.split(":");
@@ -27,10 +41,10 @@
 
 	    	if(Number.isNaN(hours)){
 	    		return res.add({
-	    			id: "error",
-	    			title: "Invalid countdown time",
-	    			desc: "Usage: /countdown [hours]:[minutes]"
-	    		});
+    			id: "error",
+    			title: "Invalid countdown time - " + query_split[0] + " is not a number",
+    			desc: "Usage: /countdown [hours]:[minutes]"
+    		});
 	    	}
 
 	    	if(query_split.length >= 2){
@@ -39,10 +53,10 @@
 
 	    		if(Number.isNaN(minutes)){
 	    			return res.add({
-		    			id: "error",
-		    			title: "Invalid countdown time",
-		    			desc: "Usage: /countdown [hours]:[minutes]"
-		    		});
+    			id: "error",
+    			title: "Invalid countdown time - " + query_split[1] + " is not a number",
+    			desc: "Usage: /countdown [hours]:[minutes]"
+    		});
 	    		}
 	    	}
 
