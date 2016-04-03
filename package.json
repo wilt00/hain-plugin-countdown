@@ -1,0 +1,27 @@
+{
+  "name": "hain-plugin-countdown",
+  "version": "0.0.1",
+  "description": "A countdown timer for Hain using cd.justinjc.com",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilt00/hain-plugin-countdown"
+  },
+  
+  "keywords": [
+    "hain0"
+  ],
+
+  "author": "Will Toher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wilt00/hain-plugin-countdown/issues"
+  },
+  "homepage": "https://github.com/wilt00/hain-plugin-countdown#readme",
+  "hain": {
+    "prefix": "/countdown ",
+    "usage": "/countdown [hours]:[minutes]",
+    "icon": "#fa fa-clock-o",
+    "redirect": "/countdown "
+  }
+}
